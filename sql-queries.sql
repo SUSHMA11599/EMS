@@ -12,10 +12,15 @@ CREATE TABLE IF NOT EXISTS users(
   city VARCHAR(20) NOT NULL,
   type_of_user VARCHAR(20) NOT NULL
 );
+drop table emp_proj_issue;
+drop table issues;
 CREATE TABLE IF NOT EXISTS issues(
   issue_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  emp_id INT NOT NULL,
   issue_type VARCHAR(30) NOT NULL,
-  issue_desc VARCHAR(50) NOT NULL
+  issue_desc VARCHAR(50) NOT NULL,
+  status varchar(10) NOT NULL,
+  FOREIGN KEY (emp_id) REFERENCES users(emp_id)
 );
 CREATE TABLE IF NOT EXISTS projects(
   project_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,

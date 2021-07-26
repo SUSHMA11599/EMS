@@ -1,4 +1,6 @@
 <!doctype html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -13,7 +15,7 @@
     </style>
 </head>
 
-<body class="d-flex flex-column">
+<body class="container d-flex flex-column">
     <x-header/>
 
     <div class="card text-center">
@@ -145,11 +147,6 @@
     </div>
 
 
-    <div class="row">
-      <!-- Simple link -->
-      <a href="/reset">Forgot password?</a>
-    </div>
-      </div>
 
       <button type="submit" value="Submit" onclick="validate_checkbox(event)" class="btn btn-primary mt-3">Register</button>
     </form>

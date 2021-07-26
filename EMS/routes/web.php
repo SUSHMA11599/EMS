@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 
 Route::get("login",[LoginController::class,'login'])->name('login-user');
-Route::view('dashboard','userdashboard');
+Route::view('userDashboard','userDashboard');
 
 Route::view('forgotPass','forgotPassword');
 
@@ -38,8 +38,14 @@ Route::get('register', function(){
 Route::post('register', [RegisterController::class, 'getFormData']
 );
 
-Route::view('normal','userdashboard');
-//Route::get('normal',[LoginController::class,'getDetails']);
-
-Route::view('issue','issue');
 Route::get('issue',[IssueController::class,'submitIssue']);
+
+Route::get('list',[IssueController::class,'getIssue']);
+
+
+Route::view('eAddress','editAddress');
+Route::view('eMobile','editMobile');
+
+Route::post('updateMobile',[LoginController::class,'updateMobile']);
+
+Route::post('updateAddress',[LoginController::class,'updateAddress']);
