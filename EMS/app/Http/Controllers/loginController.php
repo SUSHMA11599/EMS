@@ -3,8 +3,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class loginController extends Controller
+class LoginController extends Controller
 {
     public function login(Request $req)
     {
@@ -18,17 +19,26 @@ class loginController extends Controller
 
         $data = User::where('emp_id', '=', $id)->first();
 
+        $userdata = DB::table('users')
+        ->where('emp_id', $id)
+        ->get();
+
         if ($data) {
 
             if ($password == $data->password) {
-                return view('userdashboard');
+        
+                return view('userdashboard', ['data' => $userdata]);
             } else {
                 return back()->with('fail', 'invalid password');
             }
 
         } else {
-            return back()->with('fail', 'invalid ID');
+            return back()->with('fail', 'invalid user ID');
         }
     }
+
+   
+
+    
 
 }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\forgotPasswordController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\IssueController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,7 @@ Route::get('/', function () {
 });
 
 
-Route::get("login",[loginController::class,'login'])->name('login-user');
+Route::get("login",[LoginController::class,'login'])->name('login-user');
 Route::view('dashboard','userdashboard');
 
 Route::view('forgotPass','forgotPassword');
@@ -36,3 +37,9 @@ Route::get('register', function(){
 
 Route::post('register', [RegisterController::class, 'getFormData']
 );
+
+Route::view('normal','userdashboard');
+//Route::get('normal',[LoginController::class,'getDetails']);
+
+Route::view('issue','issue');
+Route::get('issue',[IssueController::class,'submitIssue']);
