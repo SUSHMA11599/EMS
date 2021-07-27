@@ -5,6 +5,7 @@ use App\Http\Controllers\forgotPasswordController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\IssueController;
+use App\Http\Controllers\ManagerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,9 @@ Route::get('list',[IssueController::class,'getIssue']);
 Route::view('eAddress','editAddress');
 Route::view('eMobile','editMobile');
 
-Route::post('updateMobile',[LoginController::class,'updateMobile']);
+Route::post('updateMobile',[UserController::class,'updateMobile']);
 
-Route::post('updateAddress',[LoginController::class,'updateAddress']);
+Route::post('updateAddress',[UserController::class,'updateAddress']);
+
+Route::post('addEmp',[ManagerController::class,'addEmployee']);
+Route::post('deleteEmp',[ManagerController::class,'deleteEmployee']);

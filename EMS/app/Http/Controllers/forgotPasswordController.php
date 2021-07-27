@@ -42,12 +42,12 @@ class forgotPasswordController extends Controller
             $password = $req->input('new_password');
 
             DB::update('update users set password=? where emp_id = ?', [$password, $id]);
-            echo "Record updated successfully.";
+            return redirect()->back()->with('message','password updated successfully');
 
         } else {
             return back()->with('error', 'Opps!!! Username not Found');
         }
 
-        //return redirect('login');
+       // return redirect('login');
     }
 }

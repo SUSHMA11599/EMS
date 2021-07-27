@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\Issue;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -32,9 +31,21 @@ class LoginController extends Controller
                     return view('userDashboard', ['data' => $userdata]);
                 } else if ($data->type_of_user == "Manager") {
 
-                    $issues = $issue = Issue::all();
+                    $issues = DB::table('issues')
+                        ->join('emp_issue', 'emp_issue.emp_id', '=', 'issues.emp_id')
+                        ->where('manager_id', $data->emp_id)
+                        ->select('issues.*')
+                        ->groupBy('issues.issue_id')
+                        ->get();
 
-                    $array = ['userdata', 'issues'];
+                    $projects = DB::table('projects')
+                        ->join('emp_proj', 'emp_proj.project_id', '=', 'projects.project_id')
+                        ->where('manager_id', $data->emp_id)
+                        ->select('projects.*')
+                        ->groupBy('projects.project_id')
+                        ->get();
+
+                    $array = ['userdata', 'issues', 'projects'];
                     return view('managerDashboard', compact($array));
 
                 } else if ($data->type_of_user == "Admin") {
@@ -50,16 +61,5 @@ class LoginController extends Controller
         }
     }
 
-    public function updateMobile(Request $req)
-    {
-        $User = User::where('type_of_user', 'Normal')->update(array('phone_number' => $req->newMobileNumber));
-       
-        return redirect()->back()->with('message','mobile Number updated');
-    }
-    public function updateAddress(Request $req)
-    {
-        $User = User::where('type_of_user', 'Normal')->update(array('comm_address' => $req->newAddress));
-        //echo "Address updated";
-        return redirect()->back()->with('message','Address updated');
-    }
+    
 }

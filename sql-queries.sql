@@ -47,3 +47,26 @@ CREATE TABLE IF NOT EXISTS emp_proj_issue(
   FOREIGN KEY (project_id) REFERENCES projects(project_id),
   FOREIGN KEY (issue_id) REFERENCES issues(issue_id)
 );
+
+  INSERT INTO emp_proj_issue(emp_id,manager_id,project_id,issue_id) VALUES(501,504,101,2);
+
+
+  CREATE TABLE IF NOT EXISTS emp_proj(
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  emp_id INT NOT NULL,
+  manager_id INT NOT NULL,
+  project_id INT NOT NULL,
+  FOREIGN KEY (emp_id) REFERENCES users(emp_id),
+  FOREIGN KEY (manager_id) REFERENCES users(emp_id),
+  FOREIGN KEY (project_id) REFERENCES projects(project_id)
+);
+
+  CREATE TABLE IF NOT EXISTS emp_issue(
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  emp_id INT NOT NULL,
+  manager_id INT NOT NULL,
+  issue_id INT,
+  FOREIGN KEY (emp_id) REFERENCES users(emp_id),
+  FOREIGN KEY (manager_id) REFERENCES users(emp_id),
+  FOREIGN KEY (issue_id) REFERENCES issues(issue_id)
+);
