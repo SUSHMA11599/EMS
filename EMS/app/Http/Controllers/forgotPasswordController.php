@@ -41,7 +41,7 @@ class forgotPasswordController extends Controller
 
             $password = $req->input('new_password');
 
-            DB::update('update users set password=? where emp_id = ?', [$password, $id]);
+            DB::update('update users set password = ? where emp_id = ?', [$password, $id]);
             return redirect()->back()->with('message','password updated successfully');
 
         } else {

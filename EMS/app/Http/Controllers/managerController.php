@@ -43,4 +43,5 @@ class ManagerController extends Controller
             return back()->with('fail','Cannot Delete Employee');
         }
     }
+
 }

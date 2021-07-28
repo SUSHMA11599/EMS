@@ -108,7 +108,7 @@
         <div class="col">
         <div class="form-check-inline" name="gender">
 
-            <input class="form-check-input mr-2" type="checkbox"name ="gender"  value="male" id="gendercheck">
+            <input class="form-check-input mr-2" type="checkbox" name ="gender"  value="male" id="gendercheck">
             <label class="form-check-label mr-2" for="flexCheckDefault">
                 Male
             </label>

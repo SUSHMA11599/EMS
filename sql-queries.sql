@@ -56,9 +56,9 @@ CREATE TABLE IF NOT EXISTS emp_proj_issue(
   emp_id INT NOT NULL,
   manager_id INT NOT NULL,
   project_id INT NOT NULL,
-  FOREIGN KEY (emp_id) REFERENCES users(emp_id),
-  FOREIGN KEY (manager_id) REFERENCES users(emp_id),
-  FOREIGN KEY (project_id) REFERENCES projects(project_id)
+  FOREIGN KEY (emp_id) REFERENCES users(emp_id) ON DELETE CASCADE,
+  FOREIGN KEY (manager_id) REFERENCES users(emp_id) ON DELETE CASCADE,
+  FOREIGN KEY (project_id) REFERENCES projects(project_id) ON DELETE CASCADE
 );
 
   CREATE TABLE IF NOT EXISTS emp_issue(
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS emp_proj_issue(
   emp_id INT NOT NULL,
   manager_id INT NOT NULL,
   issue_id INT,
-  FOREIGN KEY (emp_id) REFERENCES users(emp_id),
-  FOREIGN KEY (manager_id) REFERENCES users(emp_id),
-  FOREIGN KEY (issue_id) REFERENCES issues(issue_id)
+  FOREIGN KEY (emp_id) REFERENCES users(emp_id) ON DELETE CASCADE,
+  FOREIGN KEY (manager_id) REFERENCES users(emp_id) ON DELETE CASCADE,
+  FOREIGN KEY (issue_id) REFERENCES issues(issue_id) ON DELETE CASCADE
 );

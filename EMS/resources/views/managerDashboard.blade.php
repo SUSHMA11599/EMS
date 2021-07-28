@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <h3>Here is your Personal Data</h3>
 <body class = "container">
 <table border="2">
@@ -122,7 +121,7 @@
           </div>
           @endif
 
-          <button type="submit" class="btn btn-warning">ADD</button>
+          <button type="submit" class="btn btn-primary">ADD</button>
           <br>
       </div>
       </div>
@@ -148,6 +147,35 @@
           <br>
       </div>
       </div>
+
+      <table border="2">
+
+         <tr>
+             <th>Emp ID</th>
+             <th>Name</th>
+             <th>Password</th>
+             <th>Mobile Number</th>
+             <th>Date Of Birth</th>
+             <th>Communication Address</th>
+             <th>Gender</th>
+             <th>City</th>  
+             <th>Operation</th>    
+             </tr>
+         @foreach($users as $user)
+                <tr>
+                <td>{{ $user->emp_id }}</td>
+                <td>{{ $user->first_name ." ". $user->last_name}}</td>
+                <td>{{ $user->password }}</td>
+                <td>{{ $user->phone_number }}</td>
+                <td>{{ $user->DOB }}</td>
+                <td>{{ $user->comm_address }}</td>
+                <td>{{ $user->gender }}</td>
+                <td>{{ $user->city }}</td> 
+                     
+                </tr>
+                @endforeach 
+        </table>
+     
 
    </form>
 </body>

@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Issue;
+use App\Models\Project;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -29,6 +31,8 @@ class LoginController extends Controller
 
                 if ($data->type_of_user == "Normal") {
                     return view('userDashboard', ['data' => $userdata]);
+
+                    
                 } else if ($data->type_of_user == "Manager") {
 
                     $issues = DB::table('issues')
@@ -45,11 +49,23 @@ class LoginController extends Controller
                         ->groupBy('projects.project_id')
                         ->get();
 
-                    $array = ['userdata', 'issues', 'projects'];
+                    $users = DB::table('users')
+                        ->join('emp_proj', 'emp_proj.emp_id', '=', 'users.emp_id')
+                        ->where('manager_id', $data->emp_id)
+                        ->select('users.*')
+                        ->get();
+
+                    $array = ['userdata', 'users', 'issues', 'projects'];
                     return view('managerDashboard', compact($array));
 
                 } else if ($data->type_of_user == "Admin") {
-                    return view('AdminDashboard', ['data' => $userdata]);
+
+                    $Users = User::all();
+                    $projects = Project::all();
+                    $issues = Issue::all();
+
+                    $array = ['Users', 'issues', 'projects'];
+                    return view('AdminDashboard', compact($array));
                 }
 
             } else {
@@ -61,5 +77,4 @@ class LoginController extends Controller
         }
     }
 
-    
 }

@@ -55,7 +55,7 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 @endif
      
     </div>
-    <button class="btn btn-primary"type = "submit">click here to reset</button>
+    <button class="btn btn-primary" type = "submit">click here to reset</button>
 </form>
 </div>
 

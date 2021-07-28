@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\IssueController;
 use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,5 +52,27 @@ Route::post('updateMobile',[UserController::class,'updateMobile']);
 
 Route::post('updateAddress',[UserController::class,'updateAddress']);
 
+
 Route::post('addEmp',[ManagerController::class,'addEmployee']);
 Route::post('deleteEmp',[ManagerController::class,'deleteEmployee']);
+
+
+Route::view('admin','adminDashboard');
+
+Route::get('delete/{id}',[AdminController::class,'delete']);
+
+Route::post('addProj',[AdminController::class,'addProject']);
+
+Route::get('projdet/{id}',[AdminController::class,'getProjDetails']);
+Route::get('empDet/{id}',[AdminController::class,'getEmpDetails']);
+
+
+Route::put('updatestatus',[AdminController::class,'updateStatus']);
+
+
+Route::get('edit/{id}',[AdminController::class,'showEmpDetails']);
+
+Route::get('editproj/{id}',[AdminController::class,'showProjDetails']);
+
+Route::put('editproj',[AdminController::class,'updateProjectDetails']);
+Route::put('updateEmpDet',[AdminController::class,'updateEmpDetails']);
