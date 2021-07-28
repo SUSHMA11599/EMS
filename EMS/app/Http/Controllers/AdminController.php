@@ -74,7 +74,7 @@ class AdminController extends Controller
         $res = DB::table('users')
             ->where('users.emp_id', '=', $id)
             ->get();
-        return view('displayEmployee', ['emp' => $res]);
+        return view('editEmployee', ['emp' => $res]);
     }
 
     public function showProjDetails($id)

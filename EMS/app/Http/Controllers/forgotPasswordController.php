@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\DB;
 
 class forgotPasswordController extends Controller
 {
-    //
     public function getData(Request $req)
     {
         $req->validate([
@@ -47,7 +46,5 @@ class forgotPasswordController extends Controller
         } else {
             return back()->with('error', 'Opps!!! Username not Found');
         }
-
-       // return redirect('login');
     }
 }

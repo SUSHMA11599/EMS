@@ -8,7 +8,7 @@
         <tr>
             <th>Employee ID</th>
             <th>Employee Name</th>
-            <th>click here to delete</th>
+            <th>Delete</th>
             <th>view details</th>
             <th>edit details</th>
             <th>project working on</th>

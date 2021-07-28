@@ -27,9 +27,7 @@ Route::get('/', function () {
 
 
 Route::get("login",[LoginController::class,'login'])->name('login-user');
-Route::view('userDashboard','userDashboard');
 
-Route::view('forgotPass','forgotPassword');
 
 Route::post('update',[forgotPasswordController::class,'updatePassword']);
 
