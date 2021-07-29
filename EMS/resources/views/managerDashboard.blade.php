@@ -178,4 +178,9 @@
      
 
    </form>
+
+   <a href="login">
+    @csrf
+    <button type="submit">Logout</button>
+   </a>
 </body>

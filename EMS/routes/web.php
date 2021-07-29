@@ -24,7 +24,7 @@ Route::get('/', function () {
 });
 
 
-Route::get("login",[LoginController::class,'login'])->name('login-user');
+Route::get("loginUser",[LoginController::class,'login']);
 
 
 
@@ -79,4 +79,5 @@ Route::post('updateEmpDet',[AdminController::class,'updateEmpDetails']);
 Route::get('deleteProj/{id}',[AdminController::class,'deleteProj']);
 Route::view('delp','deleteProject');
 
-Route::get('/logout',[LoginController::class,'logout']);
+
+Route::view('login','login');

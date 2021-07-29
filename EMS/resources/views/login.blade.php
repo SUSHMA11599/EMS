@@ -5,7 +5,8 @@
     <h3 style="color: black;">SIGN-IN AND SIGN-UP HERE</h3>
     <br>
 
-    <form action="{{route('login-user')}}" method="GET">
+    <form action="loginUser" method="GET">
+    {{-- <form action="{{route('login-user')}}" method="GET"> --}}
 
         @if(Session::has('success'))
         <div class="alert alert-success">
