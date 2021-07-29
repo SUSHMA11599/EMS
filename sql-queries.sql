@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS issues(
   issue_type VARCHAR(30) NOT NULL,
   issue_desc VARCHAR(50) NOT NULL,
   status varchar(10) NOT NULL,
-  FOREIGN KEY (emp_id) REFERENCES users(emp_id)
+  FOREIGN KEY (emp_id) REFERENCES users(emp_id) ON DELETE CASCADE
 );
 CREATE TABLE IF NOT EXISTS projects(
   project_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,

@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -30,9 +31,9 @@ class LoginController extends Controller
             if ($password == $data->password) {
 
                 if ($data->type_of_user == "Normal") {
-                    return view('userDashboard', ['data' => $userdata]);
+                    //$req->session()->put('userDashboard', ['data' => $userdata]);
+                     return view('userDashboard', ['data' => $userdata]);
 
-                    
                 } else if ($data->type_of_user == "Manager") {
 
                     $issues = DB::table('issues')
@@ -64,7 +65,7 @@ class LoginController extends Controller
                     $projects = Project::all();
                     $issues = Issue::all();
 
-                    $array = ['Users', 'issues', 'projects'];
+                    $array = ['userdata', 'Users', 'issues', 'projects'];
                     return view('AdminDashboard', compact($array));
                 }
 
@@ -76,5 +77,18 @@ class LoginController extends Controller
             return back()->with('fail', 'invalid user name');
         }
     }
+    public function logout1(Request $request)
+    {
+        Auth::logout();
+        return redirect('/login');
+    }
+
+    public function logout(Request $request) {
+        echo $request;
+        $accessToken = auth()->user()->token();
+        $token= $request->user()->tokens->find($accessToken);
+        $token->revoke();
+        return response(['message' => 'You have been successfully logged out.'], 200);
+        }
 
 }

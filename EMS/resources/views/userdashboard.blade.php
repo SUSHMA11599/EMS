@@ -49,4 +49,18 @@
                     </div>
          </form>
 
+
+         <form method="get" action="logout">
+          @csrf
+          <button></button>
+          <button type="submit">Logout</button>
+           </form>
+
+           <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit">Logout</button>
+          </form>
+
+
+           
         </body>

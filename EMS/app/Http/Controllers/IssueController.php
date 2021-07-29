@@ -9,6 +9,7 @@ class IssueController extends Controller
 {
     public function submitIssue(Request $req)
     {
+
         $issue = new issue;
         $issue->emp_id = $req->emp_id;
         $issue->issue_type = $req->issue_type;
@@ -18,9 +19,5 @@ class IssueController extends Controller
         return "issue submit success";
     }
 
-    public function getIssue()
-    {
-       $issue = Issue::all();
-       return view('managerDashboard' , ['issues' => $issue]); 
-    }
+   
 }

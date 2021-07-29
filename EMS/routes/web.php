@@ -19,8 +19,6 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-
-
 Route::get('/', function () {
     return view('login');
 });
@@ -29,7 +27,10 @@ Route::get('/', function () {
 Route::get("login",[LoginController::class,'login'])->name('login-user');
 
 
+
+
 Route::post('update',[forgotPasswordController::class,'updatePassword']);
+Route::view('forgotPass','forgotPassword');
 
 Route::get('register', function(){
     return view('register');
@@ -72,5 +73,10 @@ Route::get('edit/{id}',[AdminController::class,'showEmpDetails']);
 
 Route::get('editproj/{id}',[AdminController::class,'showProjDetails']);
 
-Route::put('editproj',[AdminController::class,'updateProjectDetails']);
-Route::put('updateEmpDet',[AdminController::class,'updateEmpDetails']);
+Route::get('updateProj',[AdminController::class,'updateProjectDetails']);
+Route::post('updateEmpDet',[AdminController::class,'updateEmpDetails']);
+
+Route::get('deleteProj/{id}',[AdminController::class,'deleteProj']);
+Route::view('delp','deleteProject');
+
+Route::get('/logout',[LoginController::class,'logout']);
